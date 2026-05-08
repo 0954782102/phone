@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Samsung S24 Ultra</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -14,8 +17,8 @@
   --green: #66bb6a;
   --red: #ef5350;
   --yellow: #ffd740;
-  --bg-dark: rgba(10,10,20,0.82);
-  --bg-card: rgba(20,20,35,0.88);
+  --bg-dark: rgba(10,10,20,0.85);
+  --bg-card: rgba(20,20,35,0.90);
   --border: rgba(255,255,255,0.12);
   --text: #f0f0f0;
   --text-dim: rgba(240,240,240,0.55);
@@ -24,20 +27,16 @@
 }
 
 html, body {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%; height: 100%;
+  background: #1a1a2e;
+  display: flex; justify-content: center; align-items: center;
   overflow: hidden;
   font-family: var(--font);
 }
 
 /* ── PHONE FRAME ── */
 .phone {
-  width: 390px;
-  height: 693px;
+  width: 390px; height: 693px;
   background: #000;
   border-radius: 46px;
   position: relative;
@@ -50,131 +49,120 @@ html, body {
 }
 
 .wallpaper {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: url('https://i.postimg.cc/ZR95DBLd/653866439691714195.jpg') center/cover no-repeat;
   z-index: 0;
 }
 .wallpaper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: linear-gradient(to bottom,
-    rgba(0,0,0,0.35) 0%,
-    rgba(0,0,0,0.05) 40%,
-    rgba(0,0,0,0.15) 70%,
-    rgba(0,0,0,0.55) 100%);
+    rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 40%,
+    rgba(0,0,0,0.15) 70%, rgba(0,0,0,0.55) 100%);
 }
 
 /* ── PUNCH HOLE ── */
 .punch-hole {
-  position: absolute;
-  top: 11px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 11px;
-  height: 11px;
-  background: #000;
-  border-radius: 50%;
-  z-index: 100;
+  position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+  width: 11px; height: 11px; background: #000; border-radius: 50%; z-index: 100;
 }
 
 /* ── STATUS BAR ── */
 .status-bar {
-  position: absolute;
-  top: 0;
-  left: 0; right: 0;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px 0 16px;
-  z-index: 50;
+  position: absolute; top: 0; left: 0; right: 0; height: 38px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px 0 16px; z-index: 50;
 }
 .status-time { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
 .status-icons { display: flex; align-items: center; gap: 5px; }
 .status-icons svg { fill: #fff; }
-.status-battery {
-  display: flex; align-items: center; gap: 2px;
-  font-size: 11px; font-weight: 700; color: #fff;
-}
-.bat-body {
-  width: 20px; height: 10px; border: 1.5px solid rgba(255,255,255,0.8);
-  border-radius: 2px; position: relative;
-}
-.bat-body::after {
-  content:''; position:absolute; right:-4px; top:50%;
-  transform: translateY(-50%); width:2px; height:5px;
-  background: rgba(255,255,255,0.8); border-radius:0 1px 1px 0;
-}
+.status-battery { display: flex; align-items: center; gap: 2px; font-size: 11px; font-weight: 700; color: #fff; }
+.bat-body { width: 20px; height: 10px; border: 1.5px solid rgba(255,255,255,0.8); border-radius: 2px; position: relative; }
+.bat-body::after { content:''; position:absolute; right:-4px; top:50%; transform:translateY(-50%); width:2px; height:5px; background:rgba(255,255,255,0.8); border-radius:0 1px 1px 0; }
 .bat-fill { height:100%; width:72%; background:#66bb6a; border-radius:1px; }
+
+/* ══════════════════════════════════════
+   LOCK SCREEN
+══════════════════════════════════════ */
+#lock-screen {
+  position: absolute; inset: 0; z-index: 200;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  overflow: hidden;
+  touch-action: none;
+}
+#lock-screen .lock-wallpaper {
+  position: absolute; inset: 0;
+  background: url('https://i.postimg.cc/ZR95DBLd/653866439691714195.jpg') center/cover no-repeat;
+}
+#lock-screen .lock-wallpaper::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 100%);
+}
+.lock-content { position: relative; z-index: 2; text-align: center; width: 100%; }
+.lock-time {
+  margin-top: 80px;
+  font-size: 72px; font-weight: 100; color: #fff;
+  letter-spacing: -3px; line-height: 1;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.6);
+}
+.lock-date { font-size: 15px; color: rgba(255,255,255,0.8); margin-top: 6px; font-weight: 500; }
+
+.lock-swipe-hint {
+  position: absolute; bottom: 40px; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 2;
+}
+.lock-swipe-icon {
+  font-size: 22px; color: rgba(255,255,255,0.7);
+  animation: swipeBounce 1.8s ease-in-out infinite;
+}
+.lock-swipe-text { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 600; letter-spacing: 1px; }
+@keyframes swipeBounce {
+  0%,100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(-10px); opacity: 1; }
+}
+
+.lock-unlock-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 6px; background: rgba(255,255,255,0.15);
+  border-radius: 3px; z-index: 2;
+  transition: background 0.15s;
+}
+.lock-unlock-fill {
+  height: 100%; background: rgba(255,255,255,0.6);
+  border-radius: 3px; width: 0%;
+  transition: width 0.05s;
+}
 
 /* ── HOME SCREEN ── */
 #screen-home {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
+  position: absolute; inset: 0; z-index: 10;
+  display: flex; flex-direction: column;
 }
 
-.home-clock-area {
-  margin-top: 52px;
-  text-align: center;
-  flex-shrink: 0;
-}
-.home-clock {
-  font-size: 62px;
-  font-weight: 200;
-  color: #fff;
-  letter-spacing: -2px;
-  line-height: 1;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-}
-.home-date {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.75);
-  margin-top: 4px;
-  letter-spacing: 0.5px;
-}
+.home-clock-area { margin-top: 52px; text-align: center; flex-shrink: 0; }
+.home-clock { font-size: 62px; font-weight: 200; color: #fff; letter-spacing: -2px; line-height: 1; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+.home-date { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75); margin-top: 4px; letter-spacing: 0.5px; }
 
 .home-apps {
-  position: absolute;
-  bottom: 30px;
-  left: 0; right: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px 10px;
-  padding: 0 20px;
+  position: absolute; bottom: 30px; left: 0; right: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px 10px; padding: 0 20px;
 }
 .app-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  transition: transform 0.12s;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  cursor: pointer; transition: transform 0.12s;
 }
 .app-icon:active { transform: scale(0.88); }
 .app-icon-img {
-  width: 58px; height: 58px;
-  border-radius: 16px;
+  width: 58px; height: 58px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
-.app-icon-label {
-  font-size: 10px;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
+.app-icon-img i { font-size: 26px; color: #fff; }
+.app-icon-label { font-size: 10px; font-weight: 600; color: #fff; text-align: center; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
 
-/* App icon gradients */
 .icon-music { background: linear-gradient(135deg, #1a1a2e 0%, #e91e63 100%); }
 .icon-gps   { background: linear-gradient(135deg, #0d47a1 0%, #42a5f5 100%); }
 .icon-phone { background: linear-gradient(135deg, #1b5e20 0%, #66bb6a 100%); }
@@ -182,84 +170,57 @@ html, body {
 
 /* ── APP SCREENS ── */
 .app-screen {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
+  position: absolute; inset: 0; z-index: 20;
+  display: none; flex-direction: column; overflow: hidden;
   animation: slideUp 0.25s cubic-bezier(0.34,1.56,0.64,1);
 }
 .app-screen.active { display: flex; }
-
 @keyframes slideUp {
   from { transform: translateY(100%) scale(0.95); opacity: 0; }
-  to   { transform: translateY(0) scale(1);       opacity: 1; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 .app-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: flex; align-items: center; gap: 12px;
   padding: 46px 18px 14px;
-  background: var(--bg-dark);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
+  background: var(--bg-dark); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
 }
 .app-header h2 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
 .back-btn {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  border: none; cursor: pointer;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: none; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 16px;
-  transition: background 0.15s;
+  color: #fff; font-size: 20px; transition: background 0.15s;
 }
 .back-btn:hover { background: rgba(255,255,255,0.2); }
 
-.app-body {
-  flex: 1;
-  overflow-y: auto;
-  background: var(--bg-dark);
-  backdrop-filter: blur(20px);
-}
+.app-body { flex: 1; overflow-y: auto; background: var(--bg-dark); backdrop-filter: blur(20px); }
 .app-body::-webkit-scrollbar { width: 0; }
 
-/* ──────────────────────────────────────────
+/* ══════════════════════════════════════
    MUSIC APP
-────────────────────────────────────────── */
+══════════════════════════════════════ */
 #screen-music .app-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 20px;
-  gap: 18px;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 24px 20px; gap: 18px;
 }
-
 .music-art {
-  width: 200px; height: 200px;
-  border-radius: 24px;
+  width: 200px; height: 200px; border-radius: 24px;
   background: linear-gradient(135deg, #1a1a2e, #e91e63);
   display: flex; align-items: center; justify-content: center;
-  font-size: 70px;
   box-shadow: 0 12px 50px rgba(233,30,99,0.4);
-  flex-shrink: 0;
-  position: relative;
-  overflow: hidden;
+  flex-shrink: 0; position: relative; overflow: hidden;
 }
+.music-art i { font-size: 64px; color: rgba(255,255,255,0.85); }
 .music-art.playing::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
+  content: ''; position: absolute; inset: 0; border-radius: 24px;
   border: 2px solid rgba(233,30,99,0.6);
   animation: pulse 1.5s infinite;
 }
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(233,30,99,0.6); }
-  70% { box-shadow: 0 0 0 14px rgba(233,30,99,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(233,30,99,0.6); }
+  70%  { box-shadow: 0 0 0 14px rgba(233,30,99,0); }
   100% { box-shadow: 0 0 0 0 rgba(233,30,99,0); }
 }
 
@@ -268,450 +229,228 @@ html, body {
 .music-sub   { font-size: 13px; color: var(--text-dim); margin-top: 3px; }
 
 .music-progress-wrap { width: 100%; }
-.music-progress-bar {
-  width: 100%; height: 4px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 2px;
-  cursor: pointer;
-  position: relative;
-}
-.music-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #e91e63, #ff4081);
-  border-radius: 2px;
-  width: 0%;
-  transition: width 0.5s linear;
-}
+.music-progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; cursor: pointer; position: relative; }
+.music-progress-fill { height: 100%; background: linear-gradient(90deg, #e91e63, #ff4081); border-radius: 2px; width: 0%; transition: width 0.5s linear; }
 .music-times { display: flex; justify-content: space-between; margin-top: 6px; }
 .music-times span { font-size: 11px; color: var(--text-dim); }
 
-.music-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-}
+.music-controls { display: flex; align-items: center; justify-content: center; gap: 24px; }
 .music-btn {
-  background: none; border: none; cursor: pointer;
-  color: var(--text); font-size: 22px;
+  background: none; border: none; cursor: pointer; color: var(--text);
   display: flex; align-items: center; justify-content: center;
-  transition: transform 0.1s, opacity 0.1s;
-  width: 40px; height: 40px;
+  transition: transform 0.1s, opacity 0.1s; width: 40px; height: 40px;
 }
+.music-btn i { font-size: 20px; }
 .music-btn:active { transform: scale(0.85); }
 .music-btn.main {
-  width: 60px; height: 60px;
-  border-radius: 50%;
+  width: 60px; height: 60px; border-radius: 50%;
   background: linear-gradient(135deg, #e91e63, #ff4081);
-  font-size: 24px;
   box-shadow: 0 6px 24px rgba(233,30,99,0.5);
 }
+.music-btn.main i { font-size: 22px; }
 
-.music-playlist {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
+.music-playlist { width: 100%; background: rgba(255,255,255,0.05); border-radius: var(--radius); overflow: hidden; }
 .playlist-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: background 0.15s;
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s;
 }
 .playlist-item:last-child { border-bottom: none; }
 .playlist-item:hover, .playlist-item.active { background: rgba(233,30,99,0.12); }
-.playlist-num { font-size: 12px; color: var(--text-dim); width: 18px; text-align:center; }
+.playlist-num { font-size: 12px; color: var(--text-dim); width: 18px; text-align: center; }
 .playlist-name { font-size: 13px; color: var(--text); flex: 1; }
-.playlist-icon { font-size: 14px; }
+.playlist-icon i { font-size: 13px; color: #e91e63; }
 
-/* ──────────────────────────────────────────
+/* ══════════════════════════════════════
    GPS APP
-────────────────────────────────────────── */
+══════════════════════════════════════ */
 #screen-gps .app-body { padding: 10px 14px; }
-
-.gps-category {
-  margin-bottom: 12px;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-}
-.gps-cat-header {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 14px;
-  background: rgba(255,255,255,0.05);
-  cursor: pointer;
-}
+.gps-category { margin-bottom: 12px; background: var(--bg-card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.gps-cat-header { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.05); cursor: pointer; }
 .gps-cat-header .cat-icon { font-size: 18px; }
 .gps-cat-header .cat-name { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
 .gps-cat-header .cat-arrow { color: var(--text-dim); font-size: 12px; transition: transform 0.2s; }
 .gps-category.open .cat-arrow { transform: rotate(90deg); }
-
 .gps-locations { display: none; }
 .gps-category.open .gps-locations { display: block; }
-
-.gps-loc-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 14px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  cursor: pointer;
-  transition: background 0.15s;
-}
+.gps-loc-item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-top: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: background 0.15s; }
 .gps-loc-item:hover { background: rgba(79,195,247,0.1); }
 .gps-loc-item:active { background: rgba(79,195,247,0.2); }
 .gps-loc-icon { font-size: 14px; }
 .gps-loc-name { font-size: 12px; color: var(--text); flex: 1; }
-.gps-loc-coords { font-size: 10px; color: var(--text-dim); }
-.gps-go-btn {
-  padding: 4px 10px;
-  background: var(--accent);
-  border: none; border-radius: 8px;
-  font-size: 11px; font-weight: 700; color: #000;
-  cursor: pointer;
-  transition: transform 0.1s;
-}
+.gps-go-btn { padding: 4px 10px; background: var(--accent); border: none; border-radius: 8px; font-size: 11px; font-weight: 700; color: #000; cursor: pointer; transition: transform 0.1s; }
 .gps-go-btn:active { transform: scale(0.9); }
-
-.gps-active-marker {
-  margin: 0 14px 12px;
-  padding: 10px 14px;
-  background: rgba(79,195,247,0.15);
-  border: 1px solid rgba(79,195,247,0.3);
-  border-radius: 12px;
-  display: none;
-}
+.gps-active-marker { margin: 0 0 12px; padding: 10px 14px; background: rgba(79,195,247,0.15); border: 1px solid rgba(79,195,247,0.3); border-radius: 12px; display: none; }
 .gps-active-marker.show { display: block; }
 .gps-marker-title { font-size: 12px; font-weight: 700; color: var(--accent); }
 .gps-marker-info  { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
 
-/* ──────────────────────────────────────────
+/* ══════════════════════════════════════
    PHONE / DIALER APP
-────────────────────────────────────────── */
-#screen-phone .app-body {
-  display: flex; flex-direction: column;
-  align-items: center; padding: 20px 20px;
-  gap: 16px;
-}
+══════════════════════════════════════ */
+#screen-phone .app-body { display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 14px; }
 
-.phone-display {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  text-align: center;
-}
-.phone-number {
-  font-size: 28px; font-weight: 300; color: var(--text);
-  letter-spacing: 3px;
-  min-height: 40px;
-}
+.phone-display { width: 100%; background: rgba(255,255,255,0.05); border-radius: var(--radius); padding: 16px 20px; text-align: center; }
+.phone-number { font-size: 28px; font-weight: 300; color: var(--text); letter-spacing: 3px; min-height: 40px; }
 .phone-hint { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
 
-.dialpad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 100%;
-}
+.dialpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
 .dial-key {
-  height: 60px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--border);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  cursor: pointer;
+  height: 60px; border-radius: 14px; background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; cursor: pointer;
   transition: background 0.12s, transform 0.08s;
 }
 .dial-key:active { background: rgba(255,255,255,0.18); transform: scale(0.93); }
 .dial-key .key-num { font-size: 22px; font-weight: 600; color: var(--text); }
 .dial-key .key-sub { font-size: 9px; color: var(--text-dim); letter-spacing: 1px; }
 .dial-key.call { background: linear-gradient(135deg, #1b5e20, #66bb6a); border-color: transparent; }
+.dial-key.call i { font-size: 24px; color: #fff; }
 .dial-key.del  { background: rgba(239,83,80,0.15); border-color: rgba(239,83,80,0.3); }
+.dial-key.del i { font-size: 20px; color: var(--red); }
 
-.phone-contacts-list {
-  width: 100%;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-.contacts-title {
-  font-size: 12px; font-weight: 700; color: var(--text-dim);
-  padding: 10px 14px; border-bottom: 1px solid var(--border);
-}
-.contact-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 9px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  cursor: pointer;
-  transition: background 0.12s;
-}
+.phone-contacts-list { width: 100%; background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+.contacts-title { font-size: 12px; font-weight: 700; color: var(--text-dim); padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.contact-item { display: flex; align-items: center; gap: 12px; padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: background 0.12s; }
 .contact-item:last-child { border-bottom: none; }
 .contact-item:hover { background: rgba(255,255,255,0.05); }
-.contact-avatar {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: linear-gradient(135deg, #4a00e0, #8e24aa);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; flex-shrink: 0;
-}
+.contact-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #4a00e0, #8e24aa); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.contact-avatar i { font-size: 16px; color: #fff; }
 .contact-name { font-size: 13px; color: var(--text); flex: 1; }
 .contact-num  { font-size: 11px; color: var(--text-dim); }
-.contact-call-btn {
-  width: 30px; height: 30px; border-radius: 50%;
-  background: rgba(102,187,106,0.2); border: none;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: 14px;
-}
+.contact-call-btn { width: 30px; height: 30px; border-radius: 50%; background: rgba(102,187,106,0.2); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.contact-call-btn i { font-size: 14px; color: var(--green); }
 
-/* ──────────────────────────────────────────
-   KALYNAGRAM MESSENGER
-────────────────────────────────────────── */
-/* Registration screen */
-#kg-register {
-  display: flex; flex-direction: column;
+/* ══════════════════════════════════════
+   CALLING SCREEN
+══════════════════════════════════════ */
+#calling-screen {
+  position: absolute; inset: 0; z-index: 150;
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a0a 100%);
+  display: none; flex-direction: column;
   align-items: center; justify-content: center;
-  height: 100%; padding: 30px 24px; gap: 18px;
+  gap: 20px;
+  animation: slideUp 0.25s ease;
 }
-.kg-logo {
-  font-size: 48px; margin-bottom: 8px;
+#calling-screen.active { display: flex; }
+
+.calling-avatar-ring {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  width: 130px; height: 130px;
 }
-.kg-logo-title {
-  font-size: 24px; font-weight: 800; color: var(--text);
-  background: linear-gradient(90deg, #7c4dff, #e91e63);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+.calling-ring {
+  position: absolute; border-radius: 50%;
+  border: 2px solid rgba(102,187,106,0.4);
+  animation: ringExpand 2s ease-out infinite;
 }
+.calling-ring:nth-child(1) { width: 100%; height: 100%; animation-delay: 0s; }
+.calling-ring:nth-child(2) { width: 130%; height: 130%; animation-delay: 0.6s; }
+.calling-ring:nth-child(3) { width: 160%; height: 160%; animation-delay: 1.2s; }
+@keyframes ringExpand {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+.calling-avatar-inner {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: linear-gradient(135deg, #1b5e20, #66bb6a);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2; box-shadow: 0 8px 30px rgba(102,187,106,0.4);
+}
+.calling-avatar-inner i { font-size: 36px; color: #fff; }
+
+.calling-name { font-size: 26px; font-weight: 700; color: #fff; }
+.calling-status { font-size: 14px; color: rgba(255,255,255,0.6); }
+.calling-status.connecting { color: var(--yellow); }
+.calling-timer { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.8); font-variant-numeric: tabular-nums; letter-spacing: 2px; }
+
+.calling-actions { display: flex; gap: 30px; margin-top: 20px; }
+.call-action-btn {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 4px; border: none; cursor: pointer; transition: transform 0.12s;
+}
+.call-action-btn:active { transform: scale(0.9); }
+.call-action-btn i { font-size: 22px; }
+.call-action-btn span { font-size: 10px; color: rgba(255,255,255,0.7); }
+.call-mute { background: rgba(255,255,255,0.15); }
+.call-mute i { color: #fff; }
+.call-speaker { background: rgba(255,255,255,0.15); }
+.call-speaker i { color: #fff; }
+.call-hangup {
+  background: linear-gradient(135deg, #b71c1c, #ef5350);
+  box-shadow: 0 6px 24px rgba(239,83,80,0.5);
+}
+.call-hangup i { font-size: 26px; color: #fff; transform: rotate(135deg); }
+
+/* ══════════════════════════════════════
+   KALYNAGRAM
+══════════════════════════════════════ */
+#kg-register { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 30px 24px; gap: 18px; }
+.kg-logo { font-size: 48px; margin-bottom: 8px; }
+.kg-logo-title { font-size: 24px; font-weight: 800; color: var(--text); background: linear-gradient(90deg, #7c4dff, #e91e63); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .kg-logo-sub { font-size: 12px; color: var(--text-dim); text-align: center; }
-.kg-input {
-  width: 100%;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 16px;
-  font-size: 15px; color: var(--text);
-  font-family: var(--font);
-  outline: none;
-  transition: border-color 0.2s;
-}
+.kg-input { width: 100%; background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 16px; font-size: 15px; color: var(--text); font-family: var(--font); outline: none; transition: border-color 0.2s; }
 .kg-input:focus { border-color: var(--accent2); }
-.kg-btn {
-  width: 100%;
-  padding: 13px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #4a00e0, #8e24aa);
-  border: none; color: #fff;
-  font-size: 15px; font-weight: 700;
-  font-family: var(--font);
-  cursor: pointer;
-  box-shadow: 0 6px 24px rgba(124,77,255,0.4);
-  transition: transform 0.1s;
-}
+.kg-btn { width: 100%; padding: 13px; border-radius: 12px; background: linear-gradient(135deg, #4a00e0, #8e24aa); border: none; color: #fff; font-size: 15px; font-weight: 700; font-family: var(--font); cursor: pointer; box-shadow: 0 6px 24px rgba(124,77,255,0.4); transition: transform 0.1s; }
 .kg-btn:active { transform: scale(0.97); }
-.kg-btn.secondary {
-  background: rgba(255,255,255,0.08);
-  box-shadow: none;
-  font-weight: 600;
-}
+.kg-btn.secondary { background: rgba(255,255,255,0.08); box-shadow: none; font-weight: 600; }
 
-/* Main messenger */
 #kg-main { display: none; height: 100%; flex-direction: column; }
-
-.kg-tabs {
-  display: flex;
-  background: rgba(0,0,0,0.3);
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.kg-tab {
-  flex: 1; padding: 10px 0;
-  text-align: center;
-  font-size: 12px; font-weight: 600; color: var(--text-dim);
-  cursor: pointer; border: none; background: none;
-  font-family: var(--font);
-  transition: color 0.15s;
-  border-bottom: 2px solid transparent;
-}
+.kg-tabs { display: flex; background: rgba(0,0,0,0.3); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.kg-tab { flex: 1; padding: 10px 0; text-align: center; font-size: 12px; font-weight: 600; color: var(--text-dim); cursor: pointer; border: none; background: none; font-family: var(--font); transition: color 0.15s; border-bottom: 2px solid transparent; }
 .kg-tab.active { color: var(--accent2); border-bottom-color: var(--accent2); }
 
 .kg-tab-content { display: none; flex: 1; overflow-y: auto; }
 .kg-tab-content.active { display: flex; flex-direction: column; }
 .kg-tab-content::-webkit-scrollbar { width: 0; }
 
-/* Chats list */
 .kg-chats-list { padding: 8px 0; }
-.kg-chat-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 14px;
-  cursor: pointer;
-  transition: background 0.12s;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-}
+.kg-chat-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; cursor: pointer; transition: background 0.12s; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .kg-chat-item:hover { background: rgba(255,255,255,0.05); }
-.kg-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(135deg, #4a00e0, #8e24aa);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0; position: relative;
-}
-.kg-avatar .online-dot {
-  position: absolute; bottom: 1px; right: 1px;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: #66bb6a; border: 2px solid #000;
-}
+.kg-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #4a00e0, #8e24aa); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; position: relative; }
+.kg-avatar i { font-size: 20px; color: #fff; }
+.online-dot { position: absolute; bottom: 1px; right: 1px; width: 10px; height: 10px; border-radius: 50%; background: #66bb6a; border: 2px solid #000; }
 .kg-chat-info { flex: 1; min-width: 0; }
 .kg-chat-name { font-size: 13px; font-weight: 700; color: var(--text); }
 .kg-chat-preview { font-size: 11px; color: var(--text-dim); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.kg-chat-time  { font-size: 10px; color: var(--text-dim); }
-.kg-unread {
-  background: var(--accent2); color: #fff;
-  border-radius: 10px; font-size: 10px; font-weight: 700;
-  padding: 1px 6px; min-width: 16px; text-align: center;
-}
-.kg-empty {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 10px; color: var(--text-dim);
-}
-.kg-empty .kg-empty-icon { font-size: 44px; }
+.kg-chat-time { font-size: 10px; color: var(--text-dim); }
+.kg-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--text-dim); }
+.kg-empty i { font-size: 44px; opacity: 0.4; }
 .kg-empty p { font-size: 13px; text-align: center; }
 
-/* Search / New chat */
 .kg-search-area { padding: 10px 14px; }
-.kg-search-input {
-  width: 100%;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 9px 14px;
-  font-size: 13px; color: var(--text);
-  font-family: var(--font); outline: none;
-}
+.kg-search-input { width: 100%; background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 10px; padding: 9px 14px; font-size: 13px; color: var(--text); font-family: var(--font); outline: none; }
 .kg-search-input:focus { border-color: var(--accent2); }
 .kg-search-results { flex: 1; overflow-y: auto; }
-.kg-search-result-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  transition: background 0.12s;
-}
+.kg-search-result-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.12s; }
 .kg-search-result-item:hover { background: rgba(255,255,255,0.05); }
-.kg-message-compose {
-  padding: 12px 14px;
-  background: rgba(0,0,0,0.2);
-  border-top: 1px solid var(--border);
-  flex-shrink: 0;
-}
+.kg-message-compose { padding: 12px 14px; background: rgba(0,0,0,0.2); border-top: 1px solid var(--border); flex-shrink: 0; }
 .kg-compose-label { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; }
-.kg-compose-input {
-  width: 100%;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 13px; color: var(--text);
-  font-family: var(--font); outline: none; resize: none;
-  height: 50px;
-}
-.kg-compose-send {
-  margin-top: 8px; width: 100%;
-  padding: 9px;
-  background: linear-gradient(135deg, #4a00e0, #8e24aa);
-  border: none; border-radius: 10px;
-  color: #fff; font-size: 13px; font-weight: 700;
-  font-family: var(--font); cursor: pointer;
-}
+.kg-compose-input { width: 100%; background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 13px; color: var(--text); font-family: var(--font); outline: none; resize: none; height: 50px; }
+.kg-compose-send { margin-top: 8px; width: 100%; padding: 9px; background: linear-gradient(135deg, #4a00e0, #8e24aa); border: none; border-radius: 10px; color: #fff; font-size: 13px; font-weight: 700; font-family: var(--font); cursor: pointer; }
 
-/* Chat window */
-#kg-chat-window {
-  position: absolute;
-  inset: 0; z-index: 30;
-  background: var(--bg-dark);
-  backdrop-filter: blur(20px);
-  display: none; flex-direction: column;
-  animation: slideUp 0.22s ease;
-}
+#kg-chat-window { position: absolute; inset: 0; z-index: 30; background: var(--bg-dark); backdrop-filter: blur(20px); display: none; flex-direction: column; animation: slideUp 0.22s ease; }
 #kg-chat-window.active { display: flex; }
-.kg-chat-header {
-  display: flex; align-items: center; gap: 12px;
-  padding: 46px 16px 12px;
-  background: var(--bg-dark);
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
+.kg-chat-header { display: flex; align-items: center; gap: 12px; padding: 46px 16px 12px; background: var(--bg-dark); border-bottom: 1px solid var(--border); flex-shrink: 0; }
 .kg-chat-header-name { flex: 1; font-size: 15px; font-weight: 700; color: var(--text); }
 .kg-chat-header-sub  { font-size: 11px; color: var(--green); }
 .kg-header-actions { display: flex; gap: 8px; }
-.kg-header-btn {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: rgba(255,255,255,0.08); border: none;
-  color: #fff; font-size: 14px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
+.kg-header-btn { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); border: none; color: #fff; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-.kg-messages {
-  flex: 1; overflow-y: auto;
-  padding: 12px 14px;
-  display: flex; flex-direction: column; gap: 8px;
-}
+.kg-messages { flex: 1; overflow-y: auto; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
 .kg-messages::-webkit-scrollbar { width: 0; }
-.kg-msg {
-  max-width: 75%;
-  padding: 8px 12px;
-  border-radius: 14px;
-  font-size: 13px; line-height: 1.45;
-}
-.kg-msg.mine {
-  align-self: flex-end;
-  background: linear-gradient(135deg, #4a00e0, #8e24aa);
-  color: #fff;
-  border-bottom-right-radius: 4px;
-}
-.kg-msg.theirs {
-  align-self: flex-start;
-  background: rgba(255,255,255,0.1);
-  color: var(--text);
-  border-bottom-left-radius: 4px;
-}
+.kg-msg { max-width: 75%; padding: 8px 12px; border-radius: 14px; font-size: 13px; line-height: 1.45; }
+.kg-msg.mine { align-self: flex-end; background: linear-gradient(135deg, #4a00e0, #8e24aa); color: #fff; border-bottom-right-radius: 4px; }
+.kg-msg.theirs { align-self: flex-start; background: rgba(255,255,255,0.1); color: var(--text); border-bottom-left-radius: 4px; }
 .kg-msg-time { font-size: 10px; opacity: 0.6; margin-top: 3px; text-align: right; }
 
-.kg-input-area {
-  display: flex; gap: 8px; align-items: flex-end;
-  padding: 10px 14px 14px;
-  background: var(--bg-dark);
-  border-top: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.kg-msg-input {
-  flex: 1;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  padding: 9px 14px;
-  font-size: 13px; color: var(--text);
-  font-family: var(--font); outline: none;
-  resize: none; max-height: 80px;
-}
+.kg-input-area { display: flex; gap: 8px; align-items: flex-end; padding: 10px 14px 14px; background: var(--bg-dark); border-top: 1px solid var(--border); flex-shrink: 0; }
+.kg-msg-input { flex: 1; background: rgba(255,255,255,0.07); border: 1.5px solid var(--border); border-radius: 20px; padding: 9px 14px; font-size: 13px; color: var(--text); font-family: var(--font); outline: none; resize: none; max-height: 80px; }
 .kg-msg-input:focus { border-color: var(--accent2); }
-.kg-send-btn {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: linear-gradient(135deg, #4a00e0, #8e24aa);
-  border: none; color: #fff; font-size: 16px;
-  cursor: pointer; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-}
+.kg-send-btn { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #4a00e0, #8e24aa); border: none; color: #fff; font-size: 16px; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.kg-send-btn i { font-size: 16px; }
 
-/* Settings / Block */
 .kg-settings-list { padding: 10px 0; }
-.kg-settings-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  cursor: pointer;
-  transition: background 0.12s;
-}
+.kg-settings-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: background 0.12s; }
 .kg-settings-item:hover { background: rgba(255,255,255,0.04); }
 .kg-settings-item-icon { font-size: 20px; }
 .kg-settings-item-text { flex: 1; }
@@ -720,38 +459,17 @@ html, body {
 .kg-settings-item-action { font-size: 12px; color: var(--red); font-weight: 600; }
 .kg-blocked-name { font-weight: 700; }
 
-/* ── TOAST NOTIFICATION ── */
-.toast {
-  position: absolute;
-  top: 50px; left: 20px; right: 20px;
-  background: rgba(30,30,50,0.95);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px 16px;
-  display: flex; align-items: center; gap: 10px;
-  z-index: 200;
-  transform: translateY(-20px); opacity: 0;
-  transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
-  pointer-events: none;
-}
+/* ── TOAST ── */
+.toast { position: absolute; top: 50px; left: 20px; right: 20px; background: rgba(30,30,50,0.95); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; z-index: 300; transform: translateY(-20px); opacity: 0; transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); pointer-events: none; }
 .toast.show { transform: translateY(0); opacity: 1; }
 .toast-icon { font-size: 20px; flex-shrink: 0; }
 .toast-msg  { font-size: 12px; color: var(--text); font-weight: 600; }
 
 /* ── HOME INDICATOR ── */
-.home-indicator {
-  position: absolute;
-  bottom: 8px; left: 50%; transform: translateX(-50%);
-  width: 110px; height: 4px;
-  background: rgba(255,255,255,0.4);
-  border-radius: 2px;
-  z-index: 100;
-}
+.home-indicator { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 110px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 2px; z-index: 100; }
 </style>
 </head>
 <body>
-
 <div class="phone">
   <div class="wallpaper"></div>
   <div class="punch-hole"></div>
@@ -760,25 +478,49 @@ html, body {
   <div class="status-bar">
     <div class="status-time" id="statusTime">00:00</div>
     <div class="status-icons">
-      <!-- Signal -->
       <svg width="16" height="12" viewBox="0 0 16 12">
         <rect x="0" y="8" width="3" height="4" rx="0.5"/>
         <rect x="4.5" y="5.5" width="3" height="6.5" rx="0.5" opacity="0.9"/>
         <rect x="9" y="2.5" width="3" height="9.5" rx="0.5" opacity="0.8"/>
         <rect x="13.5" y="0" width="2.5" height="12" rx="0.5" opacity="0.5"/>
       </svg>
-      <!-- WiFi -->
       <svg width="15" height="12" viewBox="0 0 15 12">
         <path d="M7.5 9.5 a0.8 0.8 0 1 1 0.01 0Z" fill="white"/>
         <path d="M4.5 7.2 Q7.5 4.8 10.5 7.2" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
         <path d="M2 4.8 Q7.5 0.5 13 4.8" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/>
       </svg>
-      <!-- Battery -->
       <div class="status-battery">
         <div class="bat-body"><div class="bat-fill"></div></div>
         <span style="font-size:10px;margin-left:2px">72%</span>
       </div>
     </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       LOCK SCREEN
+  ══════════════════════════════ -->
+  <div id="lock-screen">
+    <div class="lock-wallpaper"></div>
+    <!-- Status bar duplicate for lock -->
+    <div class="status-bar" style="z-index:3">
+      <div class="status-time" id="lockStatusTime">00:00</div>
+      <div class="status-icons">
+        <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="4.5" y="5.5" width="3" height="6.5" rx="0.5" opacity="0.9"/><rect x="9" y="2.5" width="3" height="9.5" rx="0.5" opacity="0.8"/><rect x="13.5" y="0" width="2.5" height="12" rx="0.5" opacity="0.5"/></svg>
+        <svg width="15" height="12" viewBox="0 0 15 12"><path d="M7.5 9.5 a0.8 0.8 0 1 1 0.01 0Z" fill="white"/><path d="M4.5 7.2 Q7.5 4.8 10.5 7.2" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M2 4.8 Q7.5 0.5 13 4.8" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/></svg>
+        <div class="status-battery"><div class="bat-body"><div class="bat-fill"></div></div><span style="font-size:10px;margin-left:2px">72%</span></div>
+      </div>
+    </div>
+
+    <div class="lock-content">
+      <div class="lock-time" id="lockClock">00:00</div>
+      <div class="lock-date" id="lockDate">Понеділок, 1 Січня</div>
+    </div>
+
+    <div class="lock-swipe-hint">
+      <div class="lock-swipe-icon"><i class="fi fi-rr-angle-up"></i></div>
+      <div class="lock-swipe-text">СВАЙП ДЛЯ РОЗБЛОКУВАННЯ</div>
+    </div>
+    <div class="lock-unlock-bar"><div class="lock-unlock-fill" id="lockFill"></div></div>
   </div>
 
   <!-- HOME SCREEN -->
@@ -789,19 +531,19 @@ html, body {
     </div>
     <div class="home-apps">
       <div class="app-icon" onclick="openApp('music')">
-        <div class="app-icon-img icon-music">🎵</div>
+        <div class="app-icon-img icon-music"><i class="fi fi-sr-music"></i></div>
         <div class="app-icon-label">Музика</div>
       </div>
       <div class="app-icon" onclick="openApp('gps')">
-        <div class="app-icon-img icon-gps">🗺️</div>
+        <div class="app-icon-img icon-gps"><i class="fi fi-ss-map-marker"></i></div>
         <div class="app-icon-label">GPS</div>
       </div>
       <div class="app-icon" onclick="openApp('phone')">
-        <div class="app-icon-img icon-phone">📞</div>
+        <div class="app-icon-img icon-phone"><i class="fi fi-sr-phone-call"></i></div>
         <div class="app-icon-label">Телефон</div>
       </div>
       <div class="app-icon" onclick="openApp('kg')">
-        <div class="app-icon-img icon-msg" style="font-size:22px">🌻</div>
+        <div class="app-icon-img icon-msg"><i class="fi fi-rr-paper-plane"></i></div>
         <div class="app-icon-label">KalynaGram</div>
       </div>
     </div>
@@ -813,16 +555,14 @@ html, body {
   <div id="screen-music" class="app-screen">
     <div class="app-header">
       <button class="back-btn" onclick="closeApp('music')">‹</button>
-      <h2>🎵 Музичний плеєр</h2>
+      <h2><i class="fi fi-sr-music" style="margin-right:6px;vertical-align:middle"></i> Музичний плеєр</h2>
     </div>
     <div class="app-body">
-      <div class="music-art" id="musicArt">🎧</div>
-
+      <div class="music-art" id="musicArt"><i class="fi fi-sr-headphones"></i></div>
       <div class="music-info">
         <div class="music-title" id="musicTitle">Оберіть трек</div>
-        <div class="music-sub" id="musicSub">Radio · Музика</div>
+        <div class="music-sub" id="musicSub">Музика</div>
       </div>
-
       <div class="music-progress-wrap">
         <div class="music-progress-bar" id="progressBar" onclick="seekMusic(event)">
           <div class="music-progress-fill" id="progressFill"></div>
@@ -832,18 +572,14 @@ html, body {
           <span id="durTime">0:00</span>
         </div>
       </div>
-
       <div class="music-controls">
-        <button class="music-btn" onclick="prevTrack()" title="Попередній">⏮</button>
-        <button class="music-btn" onclick="shuffleTrack()" title="Перемішати" id="shuffleBtn">🔀</button>
-        <button class="music-btn main" id="playBtn" onclick="togglePlay()">▶</button>
-        <button class="music-btn" onclick="toggleRepeat()" title="Повтор" id="repeatBtn">🔁</button>
-        <button class="music-btn" onclick="nextTrack()" title="Наступний">⏭</button>
+        <button class="music-btn" onclick="prevTrack()" title="Попередній"><i class="fi fi-sr-skip-back"></i></button>
+        <button class="music-btn" onclick="shuffleTrack()" title="Перемішати" id="shuffleBtn" style="opacity:0.45"><i class="fi fi-sr-shuffle"></i></button>
+        <button class="music-btn main" id="playBtn" onclick="togglePlay()"><i class="fi fi-sr-play" id="playIcon"></i></button>
+        <button class="music-btn" onclick="toggleRepeat()" title="Повтор" id="repeatBtn" style="opacity:0.45"><i class="fi fi-sr-repeat"></i></button>
+        <button class="music-btn" onclick="nextTrack()" title="Наступний"><i class="fi fi-sr-skip-forward"></i></button>
       </div>
-
-      <div class="music-playlist" id="playlistContainer">
-        <!-- Динамічно заповниться -->
-      </div>
+      <div class="music-playlist" id="playlistContainer"></div>
     </div>
     <audio id="audioEl"></audio>
   </div>
@@ -854,14 +590,13 @@ html, body {
   <div id="screen-gps" class="app-screen">
     <div class="app-header">
       <button class="back-btn" onclick="closeApp('gps')">‹</button>
-      <h2>🗺️ GPS Навігатор</h2>
+      <h2><i class="fi fi-ss-map-marker" style="margin-right:6px;vertical-align:middle"></i> GPS Навігатор</h2>
     </div>
     <div class="app-body" id="gpsBody">
       <div class="gps-active-marker" id="gpsActiveMarker">
         <div class="gps-marker-title" id="gpsMarkerTitle">— Немає маршруту —</div>
         <div class="gps-marker-info" id="gpsMarkerInfo"></div>
       </div>
-      <!-- Категорії заповнюються скриптом -->
     </div>
   </div>
 
@@ -871,14 +606,13 @@ html, body {
   <div id="screen-phone" class="app-screen">
     <div class="app-header">
       <button class="back-btn" onclick="closeApp('phone')">‹</button>
-      <h2>📞 Телефон</h2>
+      <h2><i class="fi fi-sr-phone-call" style="margin-right:6px;vertical-align:middle"></i> Телефон</h2>
     </div>
     <div class="app-body">
       <div class="phone-display">
-        <div class="phone-number" id="dialDisplay">___________</div>
-        <div class="phone-hint">Введіть номер та натисніть 📞</div>
+        <div class="phone-number" id="dialDisplay" style="color:rgba(255,255,255,0.3)">___________</div>
+        <div class="phone-hint">Введіть номер та натисніть дзвінок</div>
       </div>
-
       <div class="dialpad">
         <div class="dial-key" onclick="dialPress('1')"><span class="key-num">1</span></div>
         <div class="dial-key" onclick="dialPress('2')"><span class="key-num">2</span><span class="key-sub">ABC</span></div>
@@ -889,14 +623,42 @@ html, body {
         <div class="dial-key" onclick="dialPress('7')"><span class="key-num">7</span><span class="key-sub">PQRS</span></div>
         <div class="dial-key" onclick="dialPress('8')"><span class="key-num">8</span><span class="key-sub">TUV</span></div>
         <div class="dial-key" onclick="dialPress('9')"><span class="key-num">9</span><span class="key-sub">WXYZ</span></div>
-        <div class="dial-key del" onclick="dialDel()"><span class="key-num" style="font-size:18px">⌫</span></div>
+        <div class="dial-key del" onclick="dialDel()"><i class="fi fi-sr-backspace"></i></div>
         <div class="dial-key" onclick="dialPress('0')"><span class="key-num">0</span></div>
-        <div class="dial-key call" onclick="dialCall()"><span class="key-num" style="font-size:26px">📞</span></div>
+        <div class="dial-key call" onclick="dialCall()"><i class="fi fi-sr-phone-call"></i></div>
       </div>
-
       <div class="phone-contacts-list">
         <div class="contacts-title">ШВИДКИЙ НАБІР</div>
         <div id="contactsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       CALLING SCREEN
+  ══════════════════════════════ -->
+  <div id="calling-screen">
+    <div class="calling-avatar-ring">
+      <div class="calling-ring"></div>
+      <div class="calling-ring"></div>
+      <div class="calling-ring"></div>
+      <div class="calling-avatar-inner"><i class="fi fi-sr-user"></i></div>
+    </div>
+    <div class="calling-name" id="callingName">+380XXXXXXXXX</div>
+    <div class="calling-status connecting" id="callingStatus">З'єднання...</div>
+    <div class="calling-timer" id="callingTimer" style="display:none">0:00</div>
+    <div class="calling-actions">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="call-action-btn call-mute" id="muteBtn" onclick="toggleMute()"><i class="fi fi-sr-microphone-slash"></i></button>
+        <span style="font-size:10px;color:rgba(255,255,255,0.5)">Без звуку</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="call-action-btn call-hangup" onclick="hangUp()"><i class="fi fi-sr-phone-slash"></i></button>
+        <span style="font-size:10px;color:rgba(255,255,255,0.5)">Завершити</span>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <button class="call-action-btn call-speaker" id="speakerBtn" onclick="toggleSpeaker()"><i class="fi fi-sr-volume"></i></button>
+        <span style="font-size:10px;color:rgba(255,255,255,0.5)">Гучномовець</span>
       </div>
     </div>
   </div>
@@ -907,12 +669,10 @@ html, body {
   <div id="screen-kg" class="app-screen">
     <div class="app-header">
       <button class="back-btn" onclick="closeApp('kg')">‹</button>
-      <h2>🌻 KalynaGram</h2>
+      <h2><i class="fi fi-rr-paper-plane" style="margin-right:6px;vertical-align:middle"></i> KalynaGram</h2>
       <div id="kgUserBadge" style="font-size:11px;color:var(--accent2);font-weight:700;"></div>
     </div>
     <div class="app-body" style="padding:0;">
-
-      <!-- РЕЄСТРАЦІЯ -->
       <div id="kg-register">
         <div class="kg-logo">🌻</div>
         <div class="kg-logo-title">KalynaGram</div>
@@ -920,43 +680,34 @@ html, body {
         <input class="kg-input" id="kgNickInput" placeholder="Ваш нікнейм..." maxlength="24">
         <button class="kg-btn" onclick="kgRegister()">Зареєструватись ✓</button>
       </div>
-
-      <!-- ГОЛОВНИЙ ІНТЕРФЕЙС -->
       <div id="kg-main">
         <div class="kg-tabs">
           <button class="kg-tab active" onclick="kgTab('chats',this)">💬 Чати</button>
           <button class="kg-tab" onclick="kgTab('new',this)">🔍 Знайти</button>
           <button class="kg-tab" onclick="kgTab('settings',this)">⚙️ Налаш.</button>
         </div>
-
-        <!-- ЧАТИ -->
         <div class="kg-tab-content active" id="kgTabChats">
           <div class="kg-chats-list" id="kgChatsList"></div>
         </div>
-
-        <!-- НОВИЙ ЧАТ / ПОШУК -->
         <div class="kg-tab-content" id="kgTabNew">
           <div class="kg-search-area">
             <input class="kg-search-input" id="kgSearchInput" placeholder="Введіть нік гравця..." oninput="kgSearchPlayer()">
           </div>
           <div id="kgSearchResults" class="kg-search-results"></div>
           <div class="kg-message-compose" id="kgComposeArea" style="display:none;">
-            <div class="kg-compose-label" id="kgComposeLabel">Повідомлення для: <b id="kgComposeTo"></b></div>
+            <div class="kg-compose-label">Повідомлення для: <b id="kgComposeTo"></b></div>
             <textarea class="kg-compose-input" id="kgComposeMsg" placeholder="Ваше повідомлення..."></textarea>
             <button class="kg-compose-send" onclick="kgSendNew()">Надіслати 📨</button>
           </div>
         </div>
-
-        <!-- НАЛАШТУВАННЯ -->
         <div class="kg-tab-content" id="kgTabSettings">
           <div class="kg-settings-list" id="kgSettingsList"></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- ВІКНО ЧАТУ (поверх всього у KG) -->
+  <!-- KG CHAT WINDOW -->
   <div id="kg-chat-window">
     <div class="kg-chat-header">
       <button class="back-btn" onclick="closeChatWindow()">‹</button>
@@ -965,14 +716,14 @@ html, body {
         <div class="kg-chat-header-sub">Онлайн</div>
       </div>
       <div class="kg-header-actions">
-        <button class="kg-header-btn" onclick="kgBlockFromChat()" title="Заблокувати">🚫</button>
+        <button class="kg-header-btn" onclick="kgBlockFromChat()">🚫</button>
       </div>
     </div>
     <div class="kg-messages" id="chatWinMessages"></div>
     <div class="kg-input-area">
       <textarea class="kg-msg-input" id="chatWinInput" placeholder="Повідомлення..." rows="1"
         onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();kgSendMsg();}"></textarea>
-      <button class="kg-send-btn" onclick="kgSendMsg()">➤</button>
+      <button class="kg-send-btn" onclick="kgSendMsg()"><i class="fi fi-rr-paper-plane"></i></button>
     </div>
   </div>
 
@@ -983,16 +734,97 @@ html, body {
   </div>
 
   <div class="home-indicator"></div>
-</div><!-- /phone -->
+</div>
 
 <script>
 // ═══════════════════════════════════════════════
-//  УТИЛІТИ
+//  AUDIO CONTEXT & SOUNDS
 // ═══════════════════════════════════════════════
-function showToast(msg, icon='✅', duration=2200) {
-  const t = document.getElementById('toast');
-  document.getElementById('toastIcon').textContent = icon;
-  document.getElementById('toastMsg').textContent  = msg;
+let audioCtx = null;
+function getAudioCtx(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+const DTMF = {
+  '1':[697,1209],'2':[697,1336],'3':[697,1477],
+  '4':[770,1209],'5':[770,1336],'6':[770,1477],
+  '7':[852,1209],'8':[852,1336],'9':[852,1477],
+  '*':[941,1209],'0':[941,1336],'#':[941,1477]
+};
+
+function playDTMF(key, dur=0.12){
+  try {
+    const ctx = getAudioCtx();
+    const freqs = DTMF[key];
+    if(!freqs) return;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.18, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+    gain.connect(ctx.destination);
+    freqs.forEach(f=>{
+      const osc = ctx.createOscillator();
+      osc.frequency.value = f;
+      osc.type = 'sine';
+      osc.connect(gain);
+      osc.start();
+      osc.stop(ctx.currentTime + dur);
+    });
+  } catch(e){}
+}
+
+let ringtoneInterval = null, ringtoneOsc1 = null, ringtoneOsc2 = null, ringtoneGain = null;
+
+function startRingtone(){
+  stopRingtone();
+  try {
+    const ctx = getAudioCtx();
+    function beep(){
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, ctx.currentTime);
+      g.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.05);
+      g.gain.setValueAtTime(0.15, ctx.currentTime + 0.3);
+      g.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
+      g.connect(ctx.destination);
+      [440, 660].forEach((f,i)=>{
+        const o = ctx.createOscillator();
+        o.frequency.value = f;
+        o.type = 'sine';
+        o.connect(g);
+        o.start(ctx.currentTime + i*0.0);
+        o.stop(ctx.currentTime + 0.4);
+      });
+    }
+    beep();
+    ringtoneInterval = setInterval(beep, 1500);
+  } catch(e){}
+}
+
+function stopRingtone(){
+  if(ringtoneInterval){ clearInterval(ringtoneInterval); ringtoneInterval = null; }
+}
+
+function playClickSound(){
+  try {
+    const ctx = getAudioCtx();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.value = 1200;
+    o.type = 'sine';
+    g.gain.setValueAtTime(0.08, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+    o.start(); o.stop(ctx.currentTime + 0.05);
+  } catch(e){}
+}
+
+// ═══════════════════════════════════════════════
+//  UTILITIES
+// ═══════════════════════════════════════════════
+function showToast(msg, icon='✅', duration=2200){
+  const t=document.getElementById('toast');
+  document.getElementById('toastIcon').textContent=icon;
+  document.getElementById('toastMsg').textContent=msg;
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'), duration);
 }
@@ -1000,76 +832,109 @@ function showToast(msg, icon='✅', duration=2200) {
 function pad2(n){ return String(n).padStart(2,'0'); }
 function fmtTime(s){ return `${Math.floor(s/60)}:${pad2(Math.floor(s%60))}`; }
 
-// Оновлення годинника
 function updateClock(){
   const now = new Date();
   const hm = `${pad2(now.getHours())}:${pad2(now.getMinutes())}`;
   document.getElementById('statusTime').textContent = hm;
+  document.getElementById('lockStatusTime').textContent = hm;
   document.getElementById('homeClock').textContent  = hm;
+  document.getElementById('lockClock').textContent  = hm;
   const days   = ['Неділя','Понеділок','Вівторок','Середа','Четвер','П\'ятниця','Субота'];
-  const months = ['Січня','Лютого','Березня','Квітня','Травня','Червня',
-                  'Липня','Серпня','Вересня','Жовтня','Листопада','Грудня'];
-  document.getElementById('homeDate').textContent =
-    `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
+  const months = ['Січня','Лютого','Березня','Квітня','Травня','Червня','Липня','Серпня','Вересня','Жовтня','Листопада','Грудня'];
+  const dateStr = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`;
+  document.getElementById('homeDate').textContent = dateStr;
+  document.getElementById('lockDate').textContent = dateStr;
 }
 updateClock(); setInterval(updateClock,15000);
 
 // ═══════════════════════════════════════════════
-//  CEF → PAWN МІСТ
+//  LOCK SCREEN — SWIPE UP TO UNLOCK
+// ═══════════════════════════════════════════════
+(function initLockScreen(){
+  const lock = document.getElementById('lock-screen');
+  const fill = document.getElementById('lockFill');
+  let startY = null;
+
+  function onStart(e){
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+    startY = y;
+  }
+  function onMove(e){
+    if(startY === null) return;
+    const y = e.touches ? e.touches[0].clientY : e.clientY;
+    const dy = Math.max(0, startY - y);
+    const pct = Math.min(100, (dy / 150) * 100);
+    fill.style.width = pct + '%';
+    if(pct >= 100) unlock();
+  }
+  function onEnd(){
+    if(fill.style.width !== '100%'){
+      fill.style.transition = 'width 0.3s ease';
+      fill.style.width = '0%';
+      setTimeout(()=>fill.style.transition='', 300);
+    }
+    startY = null;
+  }
+  function unlock(){
+    lock.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s';
+    lock.style.transform = 'translateY(-100%)';
+    lock.style.opacity = '0';
+    setTimeout(()=>{ lock.style.display = 'none'; }, 400);
+    playClickSound();
+  }
+
+  lock.addEventListener('touchstart', onStart, {passive:true});
+  lock.addEventListener('touchmove', onMove, {passive:true});
+  lock.addEventListener('touchend', onEnd);
+  lock.addEventListener('mousedown', onStart);
+  lock.addEventListener('mousemove', e=>{ if(e.buttons===1) onMove(e); });
+  lock.addEventListener('mouseup', onEnd);
+})();
+
+// ═══════════════════════════════════════════════
+//  CEF → PAWN BRIDGE
 // ═══════════════════════════════════════════════
 function callPawn(event, ...args){
   try {
-    // SA-MP CEF bridge (підтримка різних реалізацій)
-    if(window.cef && typeof window.cef.triggerEvent === 'function')
-      window.cef.triggerEvent(event, ...args);
-    else if(window.cef && typeof window.cef.call === 'function')
-      window.cef.call(event, args.join('|'));
-    else if(typeof samp !== 'undefined')
-      samp.callNative('OnCEFEvent', 'sdf', event, args.join('|'), 0);
-  } catch(e){ /* silence */ }
+    if(window.cef && typeof window.cef.triggerEvent==='function') window.cef.triggerEvent(event, ...args);
+    else if(window.cef && typeof window.cef.call==='function') window.cef.call(event, args.join('|'));
+    else if(typeof samp!=='undefined') samp.callNative('OnCEFEvent','sdf',event,args.join('|'),0);
+  } catch(e){}
   console.log(`[CEF→PAWN] ${event}(${args.join(', ')})`);
 }
 
 // ═══════════════════════════════════════════════
-//  НАВІГАЦІЯ ДОДАТКІВ
+//  APP NAVIGATION
 // ═══════════════════════════════════════════════
 const screens = { music:'screen-music', gps:'screen-gps', phone:'screen-phone', kg:'screen-kg' };
 function openApp(app){
   document.getElementById('screen-home').style.display='none';
   Object.values(screens).forEach(id=>{
     const el=document.getElementById(id);
-    el.classList.remove('active');
-    el.style.display='';
+    el.classList.remove('active'); el.style.display='';
   });
   const el=document.getElementById(screens[app]);
-  el.style.display='flex';
-  el.classList.add('active');
+  el.style.display='flex'; el.classList.add('active');
   if(app==='kg') kgInit();
   if(app==='gps') gpsInit();
+  playClickSound();
 }
 function closeApp(app){
   const el=document.getElementById(screens[app]);
   el.classList.remove('active');
-  setTimeout(()=>{
-    el.style.display='none';
-    document.getElementById('screen-home').style.display='flex';
-  },200);
+  setTimeout(()=>{ el.style.display='none'; document.getElementById('screen-home').style.display='flex'; },200);
+  playClickSound();
 }
 
 // ═══════════════════════════════════════════════
 //  MUSIC APP
 // ═══════════════════════════════════════════════
 const PLAYLIST = [
-  { title:'Трек 1', file:'music/1.mp3' },
-  { title:'Трек 2', file:'music/2.mp3' },
-  { title:'Трек 3', file:'music/3.mp3' },
-  { title:'Трек 4', file:'music/4.mp3' },
-  { title:'Трек 5', file:'music/5.mp3' },
-  { title:'Трек 6', file:'music/6.mp3' },
-  { title:'Трек 7', file:'music/7.mp3' },
-  { title:'Трек 8', file:'music/8.mp3' },
-  { title:'Трек 9', file:'music/9.mp3' },
-  { title:'Трек 10', file:'music/10.mp3' },
+  { title:'SadSvit — Касета',            artist:'SadSvit',           file:'music/SadSvit - Касета.mp3' },
+  { title:'Sobol — Медленно',            artist:'Sobol',             file:'music/Sobol - Медленно.mp3' },
+  { title:'Sobol — Меланхолія',          artist:'Sobol',             file:'music/Sobol - Меланхолия.mp3' },
+  { title:'Sobol — Незнайома',           artist:'Sobol',             file:'music/Sobol - Незнакомая.mp3' },
+  { title:'Yaktak feat. Sobol — Погляд', artist:'Yaktak feat. Sobol',file:'music/Yaktak feat. Sobol - Погляд.mp3' },
 ];
 
 let curTrack=0, isPlaying=false, isRepeat=false, isShuffle=false;
@@ -1083,7 +948,7 @@ function buildPlaylist(){
       <div class="playlist-item${i===curTrack?' active':''}" id="pi${i}" onclick="loadTrack(${i},true)">
         <span class="playlist-num">${i+1}</span>
         <span class="playlist-name">${t.title}</span>
-        <span class="playlist-icon">${i===curTrack&&isPlaying?'🎵':''}</span>
+        <span class="playlist-icon">${i===curTrack&&isPlaying?'<i class="fi fi-sr-music"></i>':''}</span>
       </div>`;
   });
 }
@@ -1092,15 +957,16 @@ function loadTrack(idx, play=false){
   curTrack=idx;
   const t=PLAYLIST[idx];
   document.getElementById('musicTitle').textContent=t.title;
-  document.getElementById('musicSub').textContent='Музика · Радіо';
+  document.getElementById('musicSub').textContent=t.artist;
   audio.src=t.file;
-  if(play){ audio.play().then(()=>setPlaying(true)).catch(()=>{}); }
+  if(play){ audio.play().then(()=>setPlaying(true)).catch(()=>{ showToast('Файл не знайдено','⚠️'); }); }
   buildPlaylist();
 }
 
 function setPlaying(v){
   isPlaying=v;
-  document.getElementById('playBtn').textContent= v ? '⏸' : '▶';
+  const icon=document.getElementById('playIcon');
+  icon.className = v ? 'fi fi-sr-pause' : 'fi fi-sr-play';
   document.getElementById('musicArt').classList.toggle('playing',v);
 }
 
@@ -1143,111 +1009,70 @@ audio.ontimeupdate=()=>{
   document.getElementById('durTime').textContent=fmtTime(audio.duration);
 };
 audio.onended=()=>{ if(!isRepeat) nextTrack(); };
-audio.onerror=()=>{ document.getElementById('musicSub').textContent='Помилка завантаження'; };
-audio.oncanplay=()=>{ document.getElementById('musicSub').textContent='Музика · Готово'; };
+audio.onerror=()=>{ document.getElementById('musicSub').textContent='Помилка завантаження файлу'; };
+audio.oncanplay=()=>{ document.getElementById('musicSub').textContent=PLAYLIST[curTrack].artist+' · Готово'; };
 
-// Ініціалізація плеєра
 loadTrack(0);
+buildPlaylist();
 
 // ═══════════════════════════════════════════════
 //  GPS APP
 // ═══════════════════════════════════════════════
 const GPS_LOCATIONS = [
-  {
-    cat:'🚔 Поліція', icon:'🚔',
-    locs:[
-      { name:'LSPD', coords:[1376.2949, 1061.4469, 1626.4896, 27.7764] },
-      { name:'SFPD', coords:[1376.2949, 1061.4469, 1626.4896, 27.7764] },
-      { name:'LVPD', coords:[1376.2949, 1061.4469, 1626.4896, 27.7764] },
-    ]
-  },
-  {
-    cat:'🏛️ Уряд', icon:'🏛️',
-    locs:[
-      { name:'Мерія', coords:[-1333.0955, 1929.1984, 1087.7546, 89.6277] },
-      { name:'Білий дім', coords:[1731.4105, 1367.0096, 1095.3182, 292.9517] },
-    ]
-  },
-  {
-    cat:'🎓 Авто школа', icon:'🎓',
-    locs:[
-      { name:'Авто школа', coords:[-1228.5905, 1564.6755, 1114.0768, 356.5507] },
-    ]
-  },
-  {
-    cat:'🚑 Медики', icon:'🚑',
-    locs:[
-      { name:'Медики LS', coords:[2174.6411, 578.7777, 1080.4542, 270.2591] },
-      { name:'Медики SF', coords:[2174.6411, 578.7777, 1080.4542, 270.2591] },
-      { name:'Медики LV', coords:[2174.6411, 578.7777, 1080.4542, 270.2591] },
-    ]
-  },
-  {
-    cat:'🪖 Армія', icon:'🪖',
-    locs:[
-      { name:'Армія SF', coords:[250.4903, 108.3510, 1024.3394, 200.4394] },
-      { name:'Армія LV', coords:[250.4903, 108.3510, 1024.3394, 200.4394] },
-    ]
-  },
-  {
-    cat:'🕵️ ФБР', icon:'🕵️',
-    locs:[
-      { name:'ФБР', coords:[1473.0166, 249.0210, 1013.5359, 315.8087] },
-    ]
-  },
-  {
-    cat:'📰 Новини', icon:'📰',
-    locs:[
-      { name:'Новини LS', coords:[759.5918, -1505.2585, 1417.8119, 207.1667] },
-      { name:'Новини SF', coords:[759.5918, -1505.2585, 1417.8119, 207.1667] },
-      { name:'Новини LV', coords:[759.5918, -1505.2585, 1417.8119, 207.1667] },
-    ]
-  },
-  {
-    cat:'🔫 Банди', icon:'🔫',
-    locs:[
-      { name:'LCN',     coords:[-1786.3325, -642.9802, 1001.0900, 115.2369] },
-      { name:'Якудза',  coords:[-1786.3325, -642.9802, 1001.0900, 115.2369] },
-      { name:'RM',      coords:[-1786.3325, -642.9802, 1001.0900, 115.2369] },
-      { name:'Ballas',  coords:[1795.0190, 735.8157, 1072.5573, 46.0240] },
-      { name:'Vagos',   coords:[2708.0117, 1746.2433, 1215.7015, 38.0406] },
-      { name:'Grove',   coords:[1957.0736, 1334.8208, 966.4043, 117.0578] },
-      { name:'Aztecas', coords:[1568.2350, 905.4245, 924.2636, 90.5644] },
-      { name:'Rifa',    coords:[1560.5941, 708.0313, 915.6061, 24.5535] },
-    ]
-  },
-  {
-    cat:'🚂 Залізниця LS', icon:'🚂',
-    locs:[
-      { name:'Жд ЛС 1', coords:[1996.6039, -2026.8654, 13.5708, 178.7523] },
-      { name:'Жд ЛС 2', coords:[2004.2115, -2026.9178, 13.5708, 179.3790] },
-      { name:'Жд ЛС 3', coords:[2011.5526, -2026.9365, 13.5708, 180.0057] },
-      { name:'Жд ЛС 4', coords:[2011.3553, -2009.2456, 13.5708, 359.8607] },
-      { name:'Жд ЛС 5', coords:[2003.9650, -2009.1975, 13.5708, 359.8606] },
-      { name:'Жд ЛС 6', coords:[1996.4050, -2009.2184, 13.5708, 358.2938] },
-    ]
-  },
-  {
-    cat:'🚂 Залізниця SF', icon:'🚂',
-    locs:[
-      { name:'Жд СФ 1', coords:[-1977.4750, 123.1160, 27.7047, 270.2929] },
-      { name:'Жд СФ 2', coords:[-1977.4535, 137.6149, 27.7047, 270.2929] },
-      { name:'Жд СФ 3', coords:[-1977.4214, 152.9397, 27.7047, 270.2928] },
-      { name:'Жд СФ 4', coords:[-1977.4877, 164.1166, 27.7047, 269.0396] },
-      { name:'Жд СФ 5', coords:[-1963.0514, 164.0291, 27.7087, 89.4980] },
-      { name:'Жд СФ 6', coords:[-1963.0869, 145.2251, 27.7087, 88.5580] },
-      { name:'Жд СФ 7', coords:[-1963.0641, 134.3678, 27.7087, 90.4380] },
-      { name:'Жд СФ 8', coords:[-1963.0579, 123.5178, 27.7087, 91.0647] },
-    ]
-  },
+  { cat:'🚔 Поліція', icon:'🚔', locs:[
+    { name:'LSPD', coords:[1376.2949,1061.4469,1626.4896,27.7764] },
+    { name:'SFPD', coords:[1376.2949,1061.4469,1626.4896,27.7764] },
+    { name:'LVPD', coords:[1376.2949,1061.4469,1626.4896,27.7764] },
+  ]},
+  { cat:'🏛️ Уряд', icon:'🏛️', locs:[
+    { name:'Мерія', coords:[-1333.0955,1929.1984,1087.7546,89.6277] },
+    { name:'Білий дім', coords:[1731.4105,1367.0096,1095.3182,292.9517] },
+  ]},
+  { cat:'🎓 Авто школа', icon:'🎓', locs:[
+    { name:'Авто школа', coords:[-1228.5905,1564.6755,1114.0768,356.5507] },
+  ]},
+  { cat:'🚑 Медики', icon:'🚑', locs:[
+    { name:'Медики LS', coords:[2174.6411,578.7777,1080.4542,270.2591] },
+    { name:'Медики SF', coords:[2174.6411,578.7777,1080.4542,270.2591] },
+    { name:'Медики LV', coords:[2174.6411,578.7777,1080.4542,270.2591] },
+  ]},
+  { cat:'🪖 Армія', icon:'🪖', locs:[
+    { name:'Армія SF', coords:[250.4903,108.3510,1024.3394,200.4394] },
+    { name:'Армія LV', coords:[250.4903,108.3510,1024.3394,200.4394] },
+  ]},
+  { cat:'🕵️ ФБР', icon:'🕵️', locs:[
+    { name:'ФБР', coords:[1473.0166,249.0210,1013.5359,315.8087] },
+  ]},
+  { cat:'📰 Новини', icon:'📰', locs:[
+    { name:'Новини LS', coords:[759.5918,-1505.2585,1417.8119,207.1667] },
+    { name:'Новини SF', coords:[759.5918,-1505.2585,1417.8119,207.1667] },
+    { name:'Новини LV', coords:[759.5918,-1505.2585,1417.8119,207.1667] },
+  ]},
+  { cat:'🔫 Банди', icon:'🔫', locs:[
+    { name:'LCN',     coords:[-1786.3325,-642.9802,1001.0900,115.2369] },
+    { name:'Якудза',  coords:[-1786.3325,-642.9802,1001.0900,115.2369] },
+    { name:'Ballas',  coords:[1795.0190,735.8157,1072.5573,46.0240] },
+    { name:'Vagos',   coords:[2708.0117,1746.2433,1215.7015,38.0406] },
+    { name:'Grove',   coords:[1957.0736,1334.8208,966.4043,117.0578] },
+    { name:'Aztecas', coords:[1568.2350,905.4245,924.2636,90.5644] },
+    { name:'Rifa',    coords:[1560.5941,708.0313,915.6061,24.5535] },
+  ]},
+  { cat:'🚂 Залізниця LS', icon:'🚂', locs:[
+    { name:'Жд ЛС 1', coords:[1996.6039,-2026.8654,13.5708,178.7523] },
+    { name:'Жд ЛС 2', coords:[2004.2115,-2026.9178,13.5708,179.3790] },
+    { name:'Жд ЛС 3', coords:[2011.5526,-2026.9365,13.5708,180.0057] },
+  ]},
+  { cat:'🚂 Залізниця SF', icon:'🚂', locs:[
+    { name:'Жд СФ 1', coords:[-1977.4750,123.1160,27.7047,270.2929] },
+    { name:'Жд СФ 2', coords:[-1977.4535,137.6149,27.7047,270.2929] },
+    { name:'Жд СФ 3', coords:[-1977.4214,152.9397,27.7047,270.2928] },
+  ]},
 ];
 
 function gpsInit(){
   const body=document.getElementById('gpsBody');
-  // очищаємо старі категорії
   body.querySelectorAll('.gps-category').forEach(e=>e.remove());
-
-  GPS_LOCATIONS.forEach((cat,ci)=>{
+  GPS_LOCATIONS.forEach(cat=>{
     const div=document.createElement('div');
     div.className='gps-category';
     div.innerHTML=`
@@ -1257,7 +1082,7 @@ function gpsInit(){
         <span class="cat-arrow">›</span>
       </div>
       <div class="gps-locations">
-        ${cat.locs.map((loc,li)=>`
+        ${cat.locs.map(loc=>`
           <div class="gps-loc-item" onclick="setGpsMarker('${loc.name}',${JSON.stringify(loc.coords)})">
             <span class="gps-loc-icon">📍</span>
             <span class="gps-loc-name">${loc.name}</span>
@@ -1268,33 +1093,27 @@ function gpsInit(){
   });
 }
 
-function toggleGpsCat(header){
-  const cat=header.parentElement;
-  cat.classList.toggle('open');
-}
+function toggleGpsCat(header){ header.parentElement.classList.toggle('open'); }
 
 function setGpsMarker(name, coords){
   const [x,y,z,a]=coords;
-  // Відправляємо в PAWN
   callPawn('OnPlayerSetGPS', x, y, z, a);
-
-  // Оновлюємо UI
   const marker=document.getElementById('gpsActiveMarker');
   marker.classList.add('show');
   document.getElementById('gpsMarkerTitle').textContent=`📍 ${name}`;
-  document.getElementById('gpsMarkerInfo').textContent=
-    `X: ${x.toFixed(1)}  Y: ${y.toFixed(1)}  Z: ${z.toFixed(1)}  Кут: ${a.toFixed(1)}°`;
+  document.getElementById('gpsMarkerInfo').textContent=`X: ${x.toFixed(1)}  Y: ${y.toFixed(1)}  Z: ${z.toFixed(1)}  Кут: ${a.toFixed(1)}°`;
   showToast(`GPS: ${name}`, '🗺️');
+  playClickSound();
 }
 
 // ═══════════════════════════════════════════════
-//  PHONE / DIALER APP
+//  PHONE / DIALER
 // ═══════════════════════════════════════════════
 let dialBuf='';
 const quickContacts=[
-  { name:'Сервіс', num:'911', avatar:'👮' },
-  { name:'Механік', num:'112', avatar:'🔧' },
-  { name:'Таксі',   num:'555', avatar:'🚕' },
+  { name:'Сервіс 911', num:'911', icon:'fi-sr-shield-check' },
+  { name:'Механік 112', num:'112', icon:'fi-sr-settings' },
+  { name:'Таксі 555', num:'555', icon:'fi-sr-car' },
 ];
 
 (function initPhone(){
@@ -1302,12 +1121,12 @@ const quickContacts=[
   quickContacts.forEach(c=>{
     list.innerHTML+=`
       <div class="contact-item" onclick="dialSet('${c.num}')">
-        <div class="contact-avatar">${c.avatar}</div>
+        <div class="contact-avatar"><i class="fi ${c.icon}"></i></div>
         <div style="flex:1">
           <div class="contact-name">${c.name}</div>
           <div class="contact-num">${c.num}</div>
         </div>
-        <button class="contact-call-btn" onclick="event.stopPropagation();dialCallNum('${c.num}')">📞</button>
+        <button class="contact-call-btn" onclick="event.stopPropagation();dialCallNum('${c.num}')"><i class="fi fi-sr-phone-call"></i></button>
       </div>`;
   });
 })();
@@ -1317,10 +1136,12 @@ function dialPress(k){
   if(dialBuf.length>=12) return;
   dialBuf+=k;
   updateDial();
+  playDTMF(k);
 }
 function dialDel(){
   dialBuf=dialBuf.slice(0,-1);
   updateDial();
+  playClickSound();
 }
 function updateDial(){
   const d=document.getElementById('dialDisplay');
@@ -1328,17 +1149,68 @@ function updateDial(){
   d.style.color=dialBuf?'#fff':'rgba(255,255,255,0.3)';
 }
 function dialCallNum(num){ dialBuf=num; dialCall(); }
+
+// ══ CALLING SCREEN ══
+let callTimer = null, callSeconds = 0, isMuted = false, isSpeaker = false;
+let callConnectTimeout = null;
+
 function dialCall(){
   if(!dialBuf){ showToast('Введіть номер!','⚠️'); return; }
-  callPawn('OnPlayerPhoneCall', dialBuf);
-  showToast(`Дзвоню: ${dialBuf}`,'📞');
-  // Відправляємо команду /cal
-  callPawn('OnPlayerCommand', `/cal ${dialBuf}`);
-  setTimeout(()=>{ dialBuf=''; updateDial(); }, 1500);
+  const num = dialBuf;
+  document.getElementById('callingName').textContent = num;
+  document.getElementById('callingStatus').textContent = 'З\'єднання...';
+  document.getElementById('callingStatus').className = 'calling-status connecting';
+  document.getElementById('callingTimer').style.display = 'none';
+  callSeconds = 0;
+
+  const cs = document.getElementById('calling-screen');
+  cs.classList.add('active');
+  startRingtone();
+  callPawn('OnPlayerPhoneCall', num);
+  callPawn('OnPlayerCommand', `/cal ${num}`);
+
+  // Симуляція підключення через 3с
+  callConnectTimeout = setTimeout(()=>{
+    stopRingtone();
+    document.getElementById('callingStatus').textContent = 'Розмова...';
+    document.getElementById('callingStatus').className = 'calling-status';
+    document.getElementById('callingTimer').style.display = 'block';
+    callTimer = setInterval(()=>{
+      callSeconds++;
+      document.getElementById('callingTimer').textContent = fmtTime(callSeconds);
+    }, 1000);
+  }, 3000);
+
+  dialBuf=''; updateDial();
+}
+
+function hangUp(){
+  stopRingtone();
+  if(callConnectTimeout){ clearTimeout(callConnectTimeout); callConnectTimeout=null; }
+  if(callTimer){ clearInterval(callTimer); callTimer=null; }
+  const cs = document.getElementById('calling-screen');
+  cs.style.transition='opacity 0.3s';
+  cs.style.opacity='0';
+  setTimeout(()=>{ cs.classList.remove('active'); cs.style.opacity=''; cs.style.transition=''; },300);
+  callPawn('OnPlayerHangUp');
+  playClickSound();
+}
+
+function toggleMute(){
+  isMuted = !isMuted;
+  const btn = document.getElementById('muteBtn');
+  btn.style.background = isMuted ? 'rgba(239,83,80,0.4)' : 'rgba(255,255,255,0.15)';
+  showToast(isMuted ? 'Мікрофон вимкнено' : 'Мікрофон увімкнено', isMuted ? '🔇' : '🎤', 1500);
+}
+function toggleSpeaker(){
+  isSpeaker = !isSpeaker;
+  const btn = document.getElementById('speakerBtn');
+  btn.style.background = isSpeaker ? 'rgba(79,195,247,0.3)' : 'rgba(255,255,255,0.15)';
+  showToast(isSpeaker ? 'Гучномовець увімкнено' : 'Гучномовець вимкнено', isSpeaker ? '🔊' : '🔈', 1500);
 }
 
 // ═══════════════════════════════════════════════
-//  KALYNAGRAM MESSENGER
+//  KALYNAGRAM
 // ═══════════════════════════════════════════════
 let kgNick='', kgCurrentChat=null;
 
@@ -1351,8 +1223,7 @@ function kgInit(){
     document.getElementById('kg-register').style.display='none';
     document.getElementById('kg-main').style.display='flex';
     document.getElementById('kgUserBadge').textContent='@'+kgNick;
-    kgRenderChats();
-    kgRenderSettings();
+    kgRenderChats(); kgRenderSettings();
   } else {
     document.getElementById('kg-register').style.display='flex';
     document.getElementById('kg-main').style.display='none';
@@ -1382,7 +1253,7 @@ function kgRenderChats(){
   const list=document.getElementById('kgChatsList');
   const chats=Object.keys(data.chats);
   if(!chats.length){
-    list.innerHTML=`<div class="kg-empty"><div class="kg-empty-icon">💬</div><p>Ще немає чатів.<br>Знайдіть гравця в пошуку!</p></div>`;
+    list.innerHTML=`<div class="kg-empty"><i class="fi fi-rr-comments"></i><p>Ще немає чатів.<br>Знайдіть гравця в пошуку!</p></div>`;
     return;
   }
   list.innerHTML='';
@@ -1391,7 +1262,7 @@ function kgRenderChats(){
     const last=msgs[msgs.length-1];
     list.innerHTML+=`
       <div class="kg-chat-item" onclick="openChatWindow('${partner}')">
-        <div class="kg-avatar">👤</div>
+        <div class="kg-avatar"><i class="fi fi-sr-user"></i><div class="online-dot"></div></div>
         <div class="kg-chat-info">
           <div class="kg-chat-name">@${partner}</div>
           <div class="kg-chat-preview">${last?last.text:'Розпочніть розмову...'}</div>
@@ -1414,7 +1285,7 @@ function kgRenderSettings(){
         <div class="kg-settings-item-sub">Натисніть щоб змінити</div>
       </div>
     </div>
-    <div class="kg-settings-item" style="cursor:default;background:rgba(255,255,255,0.02)">
+    <div class="kg-settings-item" style="cursor:default;">
       <span class="kg-settings-item-icon">🚫</span>
       <div class="kg-settings-item-text">
         <div class="kg-settings-item-name">Заблоковані гравці</div>
@@ -1434,8 +1305,7 @@ function kgRenderSettings(){
 
 function kgLogout(){
   if(confirm('Змінити нікнейм? Усі чати буде збережено.')){
-    localStorage.removeItem('kg_nick');
-    kgNick='';
+    localStorage.removeItem('kg_nick'); kgNick='';
     document.getElementById('kgNickInput').value='';
     kgInit();
   }
@@ -1446,23 +1316,20 @@ function kgSearchPlayer(){
   const results=document.getElementById('kgSearchResults');
   const compose=document.getElementById('kgComposeArea');
   if(!q){ results.innerHTML=''; compose.style.display='none'; return; }
-
-  // Емуляція пошуку (у реальному проекті — запит до PAWN)
   callPawn('OnKGSearchPlayer', q);
-
   results.innerHTML=`
     <div class="kg-search-result-item" onclick="kgSelectRecipient('${q}')">
-      <div class="kg-avatar">👤</div>
+      <div class="kg-avatar"><i class="fi fi-sr-user"></i></div>
       <div style="flex:1">
         <div style="font-size:13px;color:var(--text);font-weight:700">@${q}</div>
         <div style="font-size:11px;color:var(--text-dim)">Натисніть щоб написати</div>
       </div>
-      <span style="font-size:20px">💬</span>
+      <i class="fi fi-rr-paper-plane" style="font-size:18px;color:var(--accent2)"></i>
     </div>`;
 }
 
 function kgSelectRecipient(nick){
-  document.getElementById('kgComposeTo').textContent = '@'+nick;
+  document.getElementById('kgComposeTo').textContent='@'+nick;
   document.getElementById('kgComposeArea').style.display='block';
   document.getElementById('kgComposeMsg').focus();
 }
@@ -1471,24 +1338,19 @@ function kgSendNew(){
   const to=document.getElementById('kgComposeTo').textContent.replace('@','');
   const msg=document.getElementById('kgComposeMsg').value.trim();
   if(!msg){ showToast('Введіть повідомлення!','⚠️'); return; }
-
   const data=kgLoad();
   if(data.blocked.includes(to)){ showToast('Цей гравець заблокований','🚫'); return; }
-
   if(!data.chats[to]) data.chats[to]=[];
   const now=new Date();
   data.chats[to].push({ from:kgNick, text:msg, time:`${pad2(now.getHours())}:${pad2(now.getMinutes())}`, mine:true });
   kgSave(data);
-
   callPawn('OnKGSendMessage', kgNick, to, msg);
   showToast('Надіслано!','✅');
-
   document.getElementById('kgComposeMsg').value='';
   document.getElementById('kgComposeArea').style.display='none';
   document.getElementById('kgSearchInput').value='';
   document.getElementById('kgSearchResults').innerHTML='';
-  kgRenderChats();
-  openChatWindow(to);
+  kgRenderChats(); openChatWindow(to);
 }
 
 function openChatWindow(partner){
@@ -1499,8 +1361,7 @@ function openChatWindow(partner){
 }
 function closeChatWindow(){
   document.getElementById('kg-chat-window').classList.remove('active');
-  kgCurrentChat=null;
-  kgRenderChats();
+  kgCurrentChat=null; kgRenderChats();
 }
 
 function renderChatMessages(partner){
@@ -1511,8 +1372,7 @@ function renderChatMessages(partner){
   msgs.forEach(m=>{
     container.innerHTML+=`
       <div class="kg-msg ${m.mine?'mine':'theirs'}">
-        ${m.text}
-        <div class="kg-msg-time">${m.time}</div>
+        ${m.text}<div class="kg-msg-time">${m.time}</div>
       </div>`;
   });
   container.scrollTop=container.scrollHeight;
@@ -1523,46 +1383,24 @@ function kgSendMsg(){
   const input=document.getElementById('chatWinInput');
   const msg=input.value.trim();
   if(!msg) return;
-
   const data=kgLoad();
   const now=new Date();
   if(!data.chats[kgCurrentChat]) data.chats[kgCurrentChat]=[];
   data.chats[kgCurrentChat].push({ from:kgNick, text:msg, time:`${pad2(now.getHours())}:${pad2(now.getMinutes())}`, mine:true });
   kgSave(data);
-
   callPawn('OnKGSendMessage', kgNick, kgCurrentChat, msg);
   input.value='';
   renderChatMessages(kgCurrentChat);
+  playClickSound();
 }
 
-function kgBlockFromChat(){
-  if(!kgCurrentChat) return;
-  kgBlock(kgCurrentChat);
-  closeChatWindow();
-}
-
-function kgBlock(nick){
-  const data=kgLoad();
-  if(!data.blocked.includes(nick)) data.blocked.push(nick);
-  kgSave(data);
-  callPawn('OnKGBlockPlayer', kgNick, nick);
-  showToast(`@${nick} заблоковано`,'🚫');
-  kgRenderSettings();
-}
-
-function kgUnblock(nick){
-  const data=kgLoad();
-  data.blocked=data.blocked.filter(b=>b!==nick);
-  kgSave(data);
-  callPawn('OnKGUnblockPlayer', kgNick, nick);
-  showToast(`@${nick} розблоковано`,'✅');
-  kgRenderSettings();
-}
+function kgBlockFromChat(){ if(!kgCurrentChat) return; kgBlock(kgCurrentChat); closeChatWindow(); }
+function kgBlock(nick){ const data=kgLoad(); if(!data.blocked.includes(nick)) data.blocked.push(nick); kgSave(data); callPawn('OnKGBlockPlayer', kgNick, nick); showToast(`@${nick} заблоковано`,'🚫'); kgRenderSettings(); }
+function kgUnblock(nick){ const data=kgLoad(); data.blocked=data.blocked.filter(b=>b!==nick); kgSave(data); callPawn('OnKGUnblockPlayer', kgNick, nick); showToast(`@${nick} розблоковано`,'✅'); kgRenderSettings(); }
 
 // ═══════════════════════════════════════════════
-//  ЗОВНІШНІЙ API (PAWN → CEF)
+//  EXTERNAL API (PAWN → CEF)
 // ═══════════════════════════════════════════════
-// Функції що PAWN може викликати через CEF
 window.onKGReceiveMessage = function(from, msg){
   const data=kgLoad();
   const now=new Date();
@@ -1574,17 +1412,10 @@ window.onKGReceiveMessage = function(from, msg){
   if(kgCurrentChat===from) renderChatMessages(from);
   kgRenderChats();
 };
-
 window.onPhoneRing = function(from){
   showToast(`Дзвінок від: ${from}`,'📞',4000);
 };
-
-window.onGPSUpdate = function(x,y,z){
-  // Оновлення GPS мітки ззовні
-};
-
-// Ініціалізація плейліста при завантаженні
-buildPlaylist();
+window.onGPSUpdate = function(x,y,z){};
 </script>
 </body>
 </html>
